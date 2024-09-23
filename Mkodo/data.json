@@ -1,0 +1,100 @@
+{
+  "draws": [
+    {
+      "id": "draw-1",
+      "drawDate": "2023-05-15",
+      "number1": "2",
+      "number2": "16",
+      "number3": "23",
+      "number4": "44",
+      "number5": "47",
+      "number6": "52",
+      "bonus-ball": "14",
+      "topPrize": 4000000000
+    },
+    {
+      "id": "draw-2",
+      "drawDate": "2023-05-22",
+      "number1": "5",
+      "number2": "45",
+      "number3": "51",
+      "number4": "32",
+      "number5": "24",
+      "number6": "18",
+      "bonus-ball": "28",
+      "topPrize": 6000000000
+    },
+    {
+      "id": "draw-3",
+      "drawDate": "2023-05-29",
+      "number1": "34",
+      "number2": "21",
+      "number3": "4",
+      "number4": "58",
+      "number5": "1",
+      "number6": "15",
+      "bonus-ball": "51",
+      "topPrize": 6000000000
+    },
+    {
+      "id": "draw-4",
+      "drawDate": "2023-06-05",
+      "number1": "11",
+      "number2": "27",
+      "number3": "35",
+      "number4": "48",
+      "number5": "10",
+      "number6": "39",
+      "bonus-ball": "22",
+      "topPrize": 5000000000
+    },
+    {
+      "id": "draw-5",
+      "drawDate": "2023-06-12",
+      "number1": "3",
+      "number2": "17",
+      "number3": "29",
+      "number4": "41",
+      "number5": "6",
+      "number6": "30",
+      "bonus-ball": "25",
+      "topPrize": 4500000000
+    },
+    {
+      "id": "draw-6",
+      "drawDate": "2023-06-19",
+      "number1": "8",
+      "number2": "14",
+      "number3": "31",
+      "number4": "49",
+      "number5": "7",
+      "number6": "19",
+      "bonus-ball": "36",
+      "topPrize": 3000000000
+    },
+    {
+      "id": "draw-7",
+      "drawDate": "2023-06-26",
+      "number1": "9",
+      "number2": "12",
+      "number3": "42",
+      "number4": "55",
+      "number5": "15",
+      "number6": "26",
+      "bonus-ball": "33",
+      "topPrize": 3500000000
+    },
+    {
+      "id": "draw-8",
+      "drawDate": "2023-07-03",
+      "number1": "4",
+      "number2": "20",
+      "number3": "36",
+      "number4": "50",
+      "number5": "13",
+      "number6": "46",
+      "bonus-ball": "30",
+      "topPrize": 7000000000
+    }
+  ]
+}

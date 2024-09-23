@@ -1,0 +1,6 @@
+@MkodoApi_HostAddress = http://localhost:5237
+
+GET {{MkodoApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

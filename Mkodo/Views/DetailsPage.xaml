@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Mkodo.Views.DetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cardControls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+    xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:controls="clr-namespace:Mkodo.Controls"
+    xmlns:icons="clr-namespace:Mkodo.Constants"
+    xmlns:model="clr-namespace:MkodoShared.Models;assembly=MkodoShared"
+    xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+    xmlns:viewModels="clr-namespace:Mkodo.ViewModels"
+    Title=""
+    x:DataType="viewModels:DetailsPageViewModel"
+    Background="{AppThemeBinding Light={StaticResource PageColor},
+                                 Dark={StaticResource PageColor}}"
+    Shell.NavBarHasShadow="False"
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="ModalAnimated">
+
+    <Grid RowDefinitions="Auto,*">
+        <controls:HeaderView />
+
+        <ScrollView Grid.Row="1">
+            <Grid RowDefinitions="*">
+                <VerticalStackLayout
+                    Margin="20,0"
+                    IsVisible="{Binding DrawsHasError}"
+                    Spacing="20"
+                    VerticalOptions="Center">
+                    <Label Style="{StaticResource ErrorLabelTitle}" />
+                    <Label Style="{StaticResource ErrorLabelDescription}" />
+
+                    <Button Command="{Binding GoBackCommand}" Text="Go Back" />
+                </VerticalStackLayout>
+                <cards:CardsView
+                    x:Name="Carousel"
+                    Margin="0,20,0,0"
+                    IsVisible="{Binding DrawsHasError, Converter={StaticResource InvertBoolConverter}}"
+                    ItemsSource="{Binding Draws}"
+                    SelectedIndex="{Binding CurrentIndex}">
+                    <x:Arguments>
+                        <proc:CarouselProcessor
+                            OpacityFactor="0"
+                            RotationFactor="0.1"
+                            ScaleFactor="0.5" />
+                    </x:Arguments>
+                    <cards:CardsView.ItemTemplate>
+                        <DataTemplate x:DataType="model:DrawDto">
+                            <VerticalStackLayout Padding="20,10,20,0" Spacing="25">
+                                <controls:DrawView BindingContext="{Binding .}" />
+
+                                <Border
+                                    Padding="0,0,0,10"
+                                    Background="{AppThemeBinding Light={StaticResource PageColor},
+                                                                 Dark={StaticResource PageColor}}"
+                                    StrokeShape="RoundRectangle 20"
+                                    StrokeThickness="1">
+                                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                                        <Border
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            Margin="0,0,0,10"
+                                            Padding="0,10"
+                                            Background="{AppThemeBinding Light={StaticResource Secondary},
+                                                                         Dark={StaticResource Secondary}}"
+                                            StrokeShape="RoundRectangle 20,20,0,0">
+                                            <Grid ColumnDefinitions="*,*,*">
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource GridHeaderLabelStyle}"
+                                                    Text="Match" />
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource GridHeaderLabelStyle}"
+                                                    Text="Prize" />
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"
+                                                    Style="{StaticResource GridHeaderLabelStyle}"
+                                                    Text="Winners" />
+                                            </Grid>
+                                        </Border>
+
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="6" />
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="5 + Bonus" />
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="0"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="5" />
+                                        <Label
+                                            Grid.Row="7"
+                                            Grid.Column="0"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="4" />
+                                        <Label
+                                            Grid.Row="9"
+                                            Grid.Column="0"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="3" />
+                                        <Label
+                                            Grid.Row="11"
+                                            Grid.Column="0"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="2" />
+
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="{Binding Jackpot}" />
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="£2,254,356" />
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="1"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="£8824" />
+                                        <Label
+                                            Grid.Row="7"
+                                            Grid.Column="1"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="£769" />
+                                        <Label
+                                            Grid.Row="9"
+                                            Grid.Column="1"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="£36" />
+                                        <Label
+                                            Grid.Row="11"
+                                            Grid.Column="1"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="£5" />
+
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="0" />
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="2"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="2" />
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="2"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="98" />
+                                        <Label
+                                            Grid.Row="7"
+                                            Grid.Column="2"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="154" />
+                                        <Label
+                                            Grid.Row="9"
+                                            Grid.Column="2"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="1689" />
+                                        <Label
+                                            Grid.Row="11"
+                                            Grid.Column="2"
+                                            Style="{StaticResource GridLabelStyle}"
+                                            Text="88,275" />
+
+                                        <BoxView Grid.Row="2" Style="{StaticResource GridSeparatorStyle}" />
+                                        <BoxView Grid.Row="4" Style="{StaticResource GridSeparatorStyle}" />
+                                        <BoxView Grid.Row="6" Style="{StaticResource GridSeparatorStyle}" />
+                                        <BoxView Grid.Row="8" Style="{StaticResource GridSeparatorStyle}" />
+                                        <BoxView Grid.Row="10" Style="{StaticResource GridSeparatorStyle}" />
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </cards:CardsView.ItemTemplate>
+
+
+                    <cardControls:IndicatorsControl SelectedIndicatorStyle="{StaticResource SelectedIndicator}" UnselectedIndicatorStyle="{StaticResource UnselectedIndicator}" />
+                </cards:CardsView>
+            </Grid>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

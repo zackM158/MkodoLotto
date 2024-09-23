@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Mkodo.Controls.HeaderView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Mkodo.Controls"
+    xmlns:icons="clr-namespace:Mkodo.Constants"
+    xmlns:viewModels="clr-namespace:Mkodo.ViewModels"
+    x:DataType="viewModels:BaseViewModel">
+
+    <Border Padding="0" Background="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}">
+        <Grid ColumnDefinitions="Auto,*">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10,0,0,0"
+                HeightRequest="50"
+                IsVisible="{Binding HasBackButton, Source={RelativeSource AncestorType={x:Type controls:HeaderView}}}"
+                Style="{StaticResource IconLabel}"
+                Text="{OnPlatform Android={x:Static icons:MaterialSymbolsOutlined.ArrowBack},
+                                  iOS={x:Static icons:MaterialSymbolsOutlined.ArrowBackIos}}"
+                TextColor="{AppThemeBinding Light={StaticResource PageColor},
+                                            Dark={StaticResource PageColor}}"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"
+                WidthRequest="50">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <HorizontalStackLayout
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                Spacing="10">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    HorizontalTextAlignment="Center"
+                    Text="LOTTO"
+                    TextColor="{AppThemeBinding Light={StaticResource PageColor},
+                                                Dark={StaticResource PageColor}}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+
+                <Image
+                    Margin="0,10"
+                    HeightRequest="30"
+                    Source="applogowhite.png" />
+            </HorizontalStackLayout>
+        </Grid>
+    </Border>
+</ContentView>

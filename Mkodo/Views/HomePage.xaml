@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Mkodo.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Mkodo.Controls"
+    xmlns:icons="clr-namespace:Mkodo.Constants"
+    xmlns:model="clr-namespace:MkodoShared.Models;assembly=MkodoShared"
+    xmlns:viewModels="clr-namespace:Mkodo.ViewModels"
+    Title=""
+    x:DataType="viewModels:HomePageViewModel"
+    Background="{AppThemeBinding Light={StaticResource PageColor},
+                                 Dark={StaticResource PageColor}}"
+    Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+        <controls:HeaderView HasBackButton="False" />
+
+        <ScrollView Grid.Row="1">
+            <Grid
+                Padding="20,20,20,0"
+                RowDefinitions="*"
+                RowSpacing="25">
+
+                <VerticalStackLayout
+                    IsVisible="{Binding DrawsHasError}"
+                    Spacing="20"
+                    VerticalOptions="Center">
+                    <Label Style="{StaticResource ErrorLabelTitle}" />
+                    <Label Style="{StaticResource ErrorLabelDescription}" />
+
+                    <Button Command="{Binding GetDrawsCommand}" Text="Refresh" />
+                </VerticalStackLayout>
+
+                <CollectionView IsVisible="{Binding DrawsHasError, Converter={StaticResource InvertBoolConverter}}" ItemsSource="{Binding Draws}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:DrawDto">
+                            <controls:DrawView BindingContext="{Binding .}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
